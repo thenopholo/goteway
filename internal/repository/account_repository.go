@@ -45,13 +45,14 @@ func (r *AccountRepository) FindByAPIKey(apiKey string) (*domain.Account, error)
 	var createAt, updatedAt time.Time
 
 	err := r.db.QueryRow(`
-		SELECT id, name, api_key, blance, created_at, updated_at
+		SELECT id, name, email, api_key, balance, created_at, updated_at
 		FROM accounts
 		WHERE api_key = $1
 	`, apiKey).Scan(
 		&account.ID,
 		&account.Name,
 		&account.Email,
+		&account.APIKey,
 		&account.Balance,
 		&createAt,
 		&updatedAt,
@@ -73,13 +74,14 @@ func (r *AccountRepository) FindByID(id string) (*domain.Account, error) {
 	var createAt, updatedAt time.Time
 
 	err := r.db.QueryRow(`
-		SELECT id, name, api_key, blance, created_at, updated_at
+		SELECT id, name, email, api_key, balance, created_at, updated_at
 		FROM accounts
 		WHERE id = $1
 	`, id).Scan(
 		&account.ID,
 		&account.Name,
 		&account.Email,
+		&account.APIKey,
 		&account.Balance,
 		&createAt,
 		&updatedAt,

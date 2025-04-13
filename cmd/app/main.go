@@ -10,6 +10,7 @@ import (
 	"github.com/thenopholo/goteway/internal/repository"
 	"github.com/thenopholo/goteway/internal/service"
 	"github.com/thenopholo/goteway/internal/web/server"
+  _ "github.com/lib/pq"
 )
 
 func getEnv(key, defautlValue string) string {
@@ -34,7 +35,7 @@ func main() {
     getEnv("DB_SSL_MODE", "disable"),
   )
 
-  db, err := sql.Open("potsgres", connStr)
+  db, err := sql.Open("postgres", connStr)
   if err != nil {
     log.Fatal("Error connecting to database", err)
   }

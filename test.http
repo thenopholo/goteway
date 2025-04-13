@@ -1,0 +1,17 @@
+### Variávei globais
+@baseUrl = http://localhost:8080
+@apiKey = {{createAccount.response.body.api_key}}
+
+### Criar uma conta
+# @name createAccount
+POST {{baseUrl}}/accounts
+Content-Type: application/json
+
+{
+  "name": "Rodrigo Thenopholo",
+  "email": "teste@teste.com"
+}
+
+### Obter informações da conta
+GET {{baseUrl}}/accounts
+X-API-Key: {{apiKey}}

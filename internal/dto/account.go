@@ -8,7 +8,7 @@ import (
 
 type CreateAccountInput struct {
 	Name  string `json:"name"`
-	Email string `json:"emial"`
+	Email string `json:"email"`
 }
 
 type AccountOutput struct {
@@ -16,6 +16,7 @@ type AccountOutput struct {
 	Name      string    `json:"name"`
 	Email     string    `json:"email"`
 	APIKey    string    `json:"api_key,omitempty"`
+	Balance   float64   `json:"balance"`
 	CreatedAt time.Time `json:"created_at"`
 	UpdatedAt time.Time `json:"updated_at"`
 }
@@ -30,6 +31,7 @@ func FromAccount(account *domain.Account) AccountOutput {
 		Name:      account.Name,
 		Email:     account.Email,
 		APIKey:    account.APIKey,
+		Balance:   account.Balance,
 		CreatedAt: account.CreatedAt,
 		UpdatedAt: account.UpdatedAt,
 	}
