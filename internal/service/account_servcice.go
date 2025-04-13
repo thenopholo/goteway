@@ -1,4 +1,4 @@
-package servcice
+package service
 
 import (
 	"github.com/thenopholo/goteway/internal/domain"
